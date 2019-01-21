@@ -31,7 +31,14 @@ def view_shop():
 @login_required
 def add_shop():
     if request.method == 'POST':
-        shop_tasks.create_shop(request.json)
+        status = shop_tasks.create_shop(request.json)
+
+        # There was an error adding the shop to our marketplace;
+        # Either it does not follow the conventional protocol we defined
+        # or that there exist a negative inventory count
+        if not status["success"]:
+            return status["error_msg"]
+
         return jsonify(request.json)
     else:
         print(request.method)

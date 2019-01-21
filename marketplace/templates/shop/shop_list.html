@@ -10,13 +10,17 @@
         <div class="panel-group" id="accordion-testbed" role="tablist" aria-multiselectable="true">
             <table style="width:100%">
                 <tr>
-                    <th>Shop Name</th>
+                    <th>Shop ID</th>
+                    <th>Shop Name</th>.
                     <th>Description</th>
                     <th>Shop Inventory</th>
                 </tr>
 
                 {% for shop in shops %}
                 <tr>
+                    <td>
+                        {{shop.id}}
+                    </td>
                     <td>
                         {{shop.name()}}
                     </td>
