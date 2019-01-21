@@ -12,9 +12,6 @@ from marketplace.models.user import User
 ###################################################
 ### Using Flask_login to create a Login Manager ###
 ###################################################
-
-# TODO look for generation of good secret key,
-# By default Flask-Login uses sessions for authentication
 login_manager = LoginManager()
 login_manager.login_view = "main.login"
 login_manager.login_message_category = "warning"

@@ -89,27 +89,25 @@ python manager.py <command>
 ### File Hierarchy
 
 ```
-example.db
-manager.py
-Pipfile
+example.db										// Database
+manager.py										// Main app server
+Pipfile											// Dependencies for pipenv
 Pipfile.lock
 README.md
 marketplace/
-	__init__.py
-	extensions.py
-	forms.py
-	settings.py
-	controllers/
+	__init__.py									// create_app instantiation
+	settings.py									// config settings
+	controllers/								// app routes
 		__init__.py
-		main.py
-		shop.py
+		main.py									// main login and dashboard
+		shop.py									// shop dashboard
 	tasks/
-		__init__.py
-		shop_tasks.py
+		__init__.py								// main related tasks
+		shop_tasks.py							// shop related back-end tasks
 	models/
 		__init__.py
-		shop.py
-		user.py
+		shop.py									// models the shop database
+		user.py									// models a user for database
 	templates/
 		shop/
 			shop_list.html
@@ -120,17 +118,74 @@ marketplace/
 		marketplace.html
 		nav.html
 	static/
+	extensions.py								// extra extensions
+	forms.py									// forms
 doc/
-	example_add_shop_json/
+	example_add_shop_json/				// Example POST Requests to /shop/add_shop
 		example1.json
 		example2.json
-	example_purchase_json/
+	example_purchase_json/				// Example POST Requests to /shop/purchase
 		example3.json
 		example4.json
 		example5.json
 ```
 
 
+
+### JSON Requests
+
+#### Example.db
+
+The example.db in the repo should allow you to see 4 shops by default. It should look something like this:
+
+![](/home/jimmy/GitHub/ShopifyMarketPlace/doc/img/list_of_shops.png)
+
+#### Adding Shops with Inventory and Prices
+
+You can easily add a new shop to the database through a POST request onto /shop/add_shop. There are several fields that have to be set, otherwise the Response will throw an error regarding the bad request to add shop.
+
+```
+{
+    "items": {
+        "mercedes": {
+            "inventory": 5,
+            "price": 15000
+        },
+        "volkswagen": {
+            "inventory": 21,
+            "price": 10000
+        },
+        "BMW": {
+            "inventory": 13,
+            "price": 30000
+        }
+    },
+    "name": "Local Car Dealer",
+    "description": "Cars for Sale"
+}
+```
+
+In this example, we can describe which fields are needed. A shop would not be a shop without items to sell, so there has to be at least one field item in **"items"**. 
+
+Also, **"prices"** and **"inventory"** numbers have to be set to a positive number. If any of these are set to negative numbers, the response from the request will tell you the exact error and the shop will not be created.
+
+Lastly, the shop needs a **"name"**, because it doesn't make sense to have a shop with no names.
+
+#### Purchasing Items at Different Stores
+
+Looking at the list of shops at /shop/list, you can now decide what you want to purchase! As long as there are 1 or more outstanding shops that has at least 1 positive inventory count, you should be able to make a purchase. To purchase, you need to send a POST request to /shop/purchase. Here are some example fields that you need in order to complete the handshake:
+
+```
+{
+    "shop_id": 1,
+    "items": {
+        "table": "all",
+        "chair": 2
+    }
+}
+```
+
+We need a way to determine which shop we are purchasing items from. We have a **"shop_id"** tag to determine the shop; these will be listed on /shop/list. Then, you will need at least 1 item in the **"items"** field  that corresponds to the shop_id's items (otherwise the purchase will not go through). You can specify a quantity less than or equal to the inventory of the shop, or **"all"** to purchase the remaining inventory of that product. If you try to purchase more than the stock inventory or a negative amount, an error will be thrown and purchase will be nulled. Upon success, the response should tell you the price of the purchase and update the database to reflect the purchase. Refreshing the list of shops will show the newly updated inventory count.
 
 ### Recommended Installs for Testing
 
