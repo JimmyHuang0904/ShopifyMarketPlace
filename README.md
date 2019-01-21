@@ -20,7 +20,7 @@ pip install pipenv
 
 ##### We use pipenv to wrap our modules nicely for other developers
 
-You can install the packages listed in the Pipfile into the virtual env by running: 
+You can install the packages listed in the Pipfile into the virtual env by running:
 
 ```
 pipenv install
@@ -138,7 +138,7 @@ doc/
 
 The example.db in the repo should allow you to see 4 shops by default. It should look something like this:
 
-![](/home/jimmy/GitHub/ShopifyMarketPlace/doc/img/list_of_shops.png)
+![](doc/img/list_of_shops.png)
 
 #### Adding Shops with Inventory and Prices
 
@@ -165,7 +165,7 @@ You can easily add a new shop to the database through a POST request onto /shop/
 }
 ```
 
-In this example, we can describe which fields are needed. A shop would not be a shop without items to sell, so there has to be at least one field item in **"items"**. 
+In this example, we can describe which fields are needed. A shop would not be a shop without items to sell, so there has to be at least one field item in **"items"**.
 
 Also, **"prices"** and **"inventory"** numbers have to be set to a positive number. If any of these are set to negative numbers, the response from the request will tell you the exact error and the shop will not be created.
 
@@ -208,18 +208,14 @@ This will allow you to be able to see values clearly in the database.
 
 #### Installing Boomerang on your Google Extension
 
-I use 
-
-[Boomerang]: https://chrome.google.com/webstore/detail/boomerang-soap-rest-clien/eipdnjedkpcnlmmdfdkgfpljanehloah?hl=en
-
-To test my HTTP Requests and mostly to send JSON POST requests really fast.
+I use [Boomerang](https://chrome.google.com/webstore/detail/boomerang-soap-rest-clien/eipdnjedkpcnlmmdfdkgfpljanehloah?hl=en) to test my HTTP Requests and mostly to send JSON POST requests really fast.
 
 
 
 ### Known Issues and Fixes
 
 If you ever encounter an error running the server due to accessing the database with sqlite3 import error like the one shown in the picture below:
-![](/home/jimmy/GitHub/ShopifyMarketPlace/doc/img/database_error.png)
+![](doc/img/database_error.png)
 
 This means that either your python version has been corrupted and an installation is needed (since by default
 sqlite3 should be included). It is recommended to follow these steps:
