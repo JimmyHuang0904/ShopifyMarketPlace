@@ -6,6 +6,8 @@
 ######################################################################################################
 
 from flask_login import LoginManager
+from marketplace.models.user import User
+
 
 ###################################################
 ### Using Flask_login to create a Login Manager ###
@@ -16,6 +18,7 @@ from flask_login import LoginManager
 login_manager = LoginManager()
 login_manager.login_view = "main.login"
 login_manager.login_message_category = "warning"
+
 
 @login_manager.user_loader
 def load_user(userid):

@@ -32,7 +32,3 @@ def create_app(object_name):
     app.register_blueprint(shop)
 
     return app
-
-
-class ExampleTable(db.Model):
-    id = db.Column(db.Integer, primary_key=True)

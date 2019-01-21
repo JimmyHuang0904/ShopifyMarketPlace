@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Shops :: Marketplace{% endblock %}
+
+{% block page %}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Shops</h1>
+
+        <div class="panel-group" id="accordion-testbed" role="tablist" aria-multiselectable="true">
+            <table style="width:100%">
+                <tr>
+                    <th>Shop Name</th>
+                    <th>Description</th>
+                    <th>Shop Inventory</th>
+                </tr>
+
+                {% for shop in shops %}
+                <tr>
+                    <td>
+                        {{shop.name()}}
+                    </td>
+                    <td>
+                        {{shop.description()}}
+                    </td>
+                    <td>
+                        {{shop.items()}}
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+{% endblock %}

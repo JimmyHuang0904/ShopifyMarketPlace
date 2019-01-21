@@ -9,20 +9,13 @@ main = Blueprint('main', __name__)
 
 
 @main.route('/')
-# @login_required
+@login_required
 def dashboard():
     return render_template('dashboard.html')
 
-
-@main.route('/heroes', methods=['POST'])
-def create_hero():
-    req = flask.request.json
-    hero = SUPERHEROES.push(req)
-    return flask.jsonify({'id': hero.key}), 201
-
-##
+################################
 # Login Authentication
-##
+################################
 
 
 @main.route("/login", methods=["GET", "POST"])

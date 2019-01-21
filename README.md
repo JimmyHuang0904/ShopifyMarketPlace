@@ -36,6 +36,8 @@ export FLASK_APP=manager
 #### On Windows Development
 C:\path\to\app>set FLASK_APP=manager.py
 
+$ export FLASK_ENV=development
+
 ##### Running the Flask App
 #### On Development Server Locally
 flask run
@@ -45,7 +47,15 @@ flask run --host=0.0.0.0
 
 
 
+##### Recommended Installs for Testing
+### Inspecting the example.db file
+We can inspect the database with a gui easily with sqlitebrowser
 
+$ sudo apt-get install sqlitebrowser
+
+$ sqlitebrowser example.db
+
+This will allow you to be able to see values clearly.
 
 ##### KNOWN ISSUES
 If you ever encounter an error running the server due to accessing the database with sqlite3 import error like so:

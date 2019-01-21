@@ -20,6 +20,7 @@ class LoginForm(FlaskForm):
         if not check_validate:
             return False
 
+        # TODO: We could add LDAP authentication for real production
         # if current_app.config['LDAP_LOGIN']:
         #     # Check credentials against LDAP server
         #     if not ldap.bind_user(self.username.data, self.password.data):
