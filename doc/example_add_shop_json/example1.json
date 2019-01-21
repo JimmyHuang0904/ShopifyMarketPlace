@@ -1,14 +1,18 @@
 {
     "items": {
-        "table": {
-            "inventory": 144,
-            "price": 10
+        "mercedes": {
+            "inventory": 5,
+            "price": 15000
         },
-        "chair": {
-            "inventory": 4,
-            "price": 2
+        "volkswagen": {
+            "inventory": 21,
+            "price": 10000
+        },
+        "BMW": {
+            "inventory": 13,
+            "price": 30000
         }
     },
-    "name": "furnitures",
-    "description": "Only wooden furnitures"
+    "name": "Local Car Dealer",
+    "description": "Cars for Sale"
 }
