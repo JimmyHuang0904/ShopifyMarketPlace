@@ -1,16 +1,30 @@
 import os
 
+
 class BaseConfig():
-  pass
+    SECRET_KEY = 'REPLACE ME'
+    DEBUG = True
 
-
-# We use LDAP authentication because account look up for login and processing
+# We assume we could use LDAP authentication because account look up for login and processing
 # is used more than creation (LDAP will be able to handle more reads than write operation)
 
 # Configuration for Production
+
+
 class ProdConfig(BaseConfig):
-  ENV   = 'prod'
+    # Internal configuration
+    FLASK_ENV = 'production'
+    ENV = 'production'
+    DEBUG = False
+
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///../database.db'
+
 
 class DevConfig(BaseConfig):
-  ENV   = 'dev'
-  DEBUG = True
+    # Internal configuration values
+    FLASK_ENV = 'development'
+    ENV = 'development'
+    DEBUG = True
+    TESTING = True
+
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///../database.db'

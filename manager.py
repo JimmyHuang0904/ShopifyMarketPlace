@@ -2,14 +2,24 @@
 
 import os
 
-from flask import Flask
+from flask_script import Manager
 
+from marketplace import create_app
+from marketplace.models import db
 
 env = os.environ.get('MARKETPLACE_ENV', 'dev')
-app = Flask(__name__)
+app = create_app('marketplace.settings.{}Config'.format(env.capitalize()))
+
+manager = Manager(app)
 
 
+@manager.command
+def createdb():
+    """ Creates a database with all of the tables defined in
+          your SQLAlchemy models
+    """
+    db.create_all()
 
-@app.route('/')
-def hello_world():
-    return 'Hello, World!'
+
+if __name__ == "__main__":
+    manager.run()

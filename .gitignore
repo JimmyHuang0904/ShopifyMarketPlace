@@ -1,3 +1,6 @@
 # Ignore cached artifacts
 __pycache__/*
 *.pyc
+
+# Ignore vscode
+.vscode

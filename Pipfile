@@ -7,6 +7,7 @@ name = "pypi"
 
 [dev-packages]
 
+"autopep8" = "*"
 
 
 [packages]
@@ -15,3 +16,7 @@ flask = "==1.0.2"
 requests = "*"
 flask-sqlalchemy = "*"
 flask-migrate = "*"
+flask-login = "*"
+flask-wtf = "*"
+flask-simpleldap = "*"
+flask-script = "*"
