@@ -6,9 +6,6 @@ from marketplace.controllers.shop import shop
 from marketplace.models import db
 from marketplace.extensions import login_manager
 
-# Remove later
-# from flask_sqlalchemy import SQLAlchemy
-
 
 def create_app(object_name):
     app = Flask(__name__)
@@ -22,12 +19,11 @@ def create_app(object_name):
     # TODO: NEED TO FIX THIS WITH CONFIG
     # Set the secret key to some random bytes. Keep this really secret!
     app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://///home/jimmy/GitHub/ShopifyMarketPlace/example.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     # initialize SQLAlchemy
     db.init_app(app)
-    # db = SQLAlchemy(app)
 
     login_manager.init_app(app)
 
@@ -36,3 +32,7 @@ def create_app(object_name):
     app.register_blueprint(shop)
 
     return app
+
+
+class ExampleTable(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
