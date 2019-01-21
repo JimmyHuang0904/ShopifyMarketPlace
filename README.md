@@ -88,6 +88,48 @@ python manager.py <command>
 
 ### File Hierarchy
 
+```
+example.db
+manager.py
+Pipfile
+Pipfile.lock
+README.md
+marketplace/
+	__init__.py
+	extensions.py
+	forms.py
+	settings.py
+	controllers/
+		__init__.py
+		main.py
+		shop.py
+	tasks/
+		__init__.py
+		shop_tasks.py
+	models/
+		__init__.py
+		shop.py
+		user.py
+	templates/
+		shop/
+			shop_list.html
+			shop_template.html
+		base.html
+		dashboard.html
+		login.html
+		marketplace.html
+		nav.html
+	static/
+doc/
+	example_add_shop_json/
+		example1.json
+		example2.json
+	example_purchase_json/
+		example3.json
+		example4.json
+		example5.json
+```
+
 
 
 ### Recommended Installs for Testing
