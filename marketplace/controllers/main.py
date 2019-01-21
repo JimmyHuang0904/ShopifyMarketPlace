@@ -8,16 +8,21 @@ from marketplace.models.user import User
 main = Blueprint('main', __name__)
 
 
+################################
+# Dashboard
+################################
+# Right now the Dashboard doesn't achieve much. This is where we can
+# display all users transaction and compute statistics to see.
+# This is less of a priority so this is TODO:
 @main.route('/')
 @login_required
 def dashboard():
     return render_template('dashboard.html')
 
+
 ################################
 # Login Authentication
 ################################
-
-
 @main.route("/login", methods=["GET", "POST"])
 def login():
     form = LoginForm()

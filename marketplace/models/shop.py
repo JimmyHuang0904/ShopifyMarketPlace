@@ -1,21 +1,25 @@
-##
+#######################################
 # This file models a shop
-##
+#######################################
 
 from . import db
 import json
 
 
 # We want to model a shop like this JSON example:
-# {"shop":
-#     {
-#         "items":{
-#             "table" : 1,
-#             "chair" : 2
+# {
+#     "items":{
+#         "table" : {
+#             "inventory" : 1,
+#             "price"     : 3
 #         },
-#         "name": "<name_of_shop>",
-#         "description": "<description>"
-#     }
+#         "chair" : {
+#             "inventory" : 3,
+#             "price"     : 10
+#         }
+#     },
+#     "name": "<name_of_shop>",
+#     "description": "<description>"
 # }
 
 
@@ -24,11 +28,8 @@ class Shop(db.Model):
     id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
     shop_info = db.Column(db.String())
 
-    # TODO: Try to test using constructor to create new shops
     def __init__(self, shop_info):
         self.shop_info = shop_info
-        print(shop_info)
-        print(type(shop_info))
 
     def __shop_info(self):
         return json.loads(self.shop_info)

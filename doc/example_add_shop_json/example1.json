@@ -1,0 +1,14 @@
+{
+    "items": {
+        "table": {
+            "inventory": 144,
+            "price": 10
+        },
+        "chair": {
+            "inventory": 4,
+            "price": 2
+        }
+    },
+    "name": "furnitures",
+    "description": "Only wooden furnitures"
+}
