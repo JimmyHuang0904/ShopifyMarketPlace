@@ -62,10 +62,8 @@ def purchase_request():
     if request.method == 'POST':
         status = shop_tasks.purchase_request(request.json)
 
-        if not status["success"]:
-            return status["error_msg"]
-
-        return jsonify(request.json)
+        # Will return error message on failure or purchase price on success in HTTP response
+        return status["error_msg"]
     else:
         flash("HTTP request was a {} request. Try doing a POST request".format(
             request.method))

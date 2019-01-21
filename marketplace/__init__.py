@@ -10,21 +10,13 @@ from marketplace.extensions import login_manager
 def create_app(object_name):
     app = Flask(__name__)
 
-    # print(object_name))
-    # TODO: Fix this
-    # app.config.from_object('marketplace.settings.ProdConfig')
-    # app.config['DEBUG'] = True
-    # app.config['TESTING'] = True
-
-    # TODO: NEED TO FIX THIS WITH CONFIG
-    # Set the secret key to some random bytes. Keep this really secret!
-    app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://///home/jimmy/GitHub/ShopifyMarketPlace/example.db'
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config.from_object(object_name)
 
     # initialize SQLAlchemy
     db.init_app(app)
 
+    # Login interface added, LDAP client/server support have not been incorporated
+    # yet so that you can just login in with no password.
     login_manager.init_app(app)
 
     # Register blueprints

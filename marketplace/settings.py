@@ -5,7 +5,7 @@ class BaseConfig():
     SECRET_KEY = 'REPLACE ME'
     DEBUG = True
 
-# We assume we could use LDAP authentication because account look up for login and processing
+# TODO: Add LDAP config. We assume we could use LDAP authentication because account look up for login and processing
 # is used more than creation (LDAP will be able to handle more reads than write operation)
 
 # Configuration for Production
@@ -17,7 +17,8 @@ class ProdConfig(BaseConfig):
     ENV = 'production'
     DEBUG = False
 
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///../database.db'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///../example.db'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
 class DevConfig(BaseConfig):
@@ -27,4 +28,5 @@ class DevConfig(BaseConfig):
     DEBUG = True
     TESTING = True
 
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///../database.db'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///../example.db'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
